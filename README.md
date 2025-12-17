@@ -1,18 +1,20 @@
-![GitHub all releases](https://img.shields.io/github/downloads/Youri666/Xtream-m3u_plus-IPTV-Player/total?color=blue&label=Total%20Downloads&logo=github)
-![GitHub release (latest by date)](https://img.shields.io/github/downloads/Youri666/Xtream-m3u_plus-IPTV-Player/V1.03.02/total?color=purple&label=Latest%20Release%20Downloads&logo=github)
-![GitHub License](https://img.shields.io/github/license/Youri666/Xtream-m3u_plus-IPTV-Player?label=License&logo=github)
-![GitHub stars](https://img.shields.io/github/stars/Youri666/Xtream-m3u_plus-IPTV-Player)
+![GitHub all releases](https://img.shields.io/github/downloads/tealtainha/Xtream-Player/total?color=blue&label=Total%20Downloads&logo=github)
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/tealtainha/Xtream-Player/V1.04.01/total?color=purple&label=Latest%20Release%20Downloads&logo=github)
+![GitHub License](https://img.shields.io/github/license/tealtainha/Xtream-Player?label=License&logo=github)
+![GitHub stars](https://img.shields.io/github/stars/tealtainha/Xtream-Player)
 
 # FREE OPENSOURCE M3U/XTREME IPTV PLAYER
 
+Forked from [Youri666/Xtream-m3u_plus-IPTV-Player](https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/)
+
 This IPTV player, built with Python and PyQt5, supports M3U_plus playlists and Xtream Codes API, allowing users to manage and play IPTV channels, movies, and series.
 
-> Feel free to report issues when encountering any problems: [Issues](https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/issues)
+> Feel free to report issues when encountering any problems: [Issues](https://github.com/tealtainha/Xtream-Player/issues)
 
-> For sharing ideas and general questions: [Discussions](https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/discussions)
+> For sharing ideas and general questions: [Discussions](https://github.com/tealtainha/Xtream-Player/discussions)
 
 # Download
-Download the latest version here: [Latest releases](https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/releases)
+Download the latest version here: [Latest releases](https://github.com/tealtainha/Xtream-Player/releases)
 
 # Features
 - **Supports Windows, Linux and Mac OS**
@@ -65,7 +67,7 @@ Some IPTV providers require a different URL format than the default, therefore y
 
 ```{server}/live/{username}/{password}/{stream_id}.m3u8```
 
-If none of these work, more attention is needed and you should create an [Issues](https://github.com/Youri666/Xtream-m3u_plus-IPTV-Player/issues).
+If none of these work, more attention is needed and you should create an [Issues](https://github.com/tealtainha/Xtream-Player/issues).
 
 </details>
 
@@ -112,6 +114,7 @@ If none of these work, more attention is needed and you should create an [Issues
 python -m pip install --upgrade pip
 python -m pip install --upgrade setuptools
 python -m pip install --upgrade pyinstaller
+python -m pip install --upgrade pyqtdarktheme
 python -m pip install --upgrade requests lxml python-dateutil PyQt5
 ```
 
@@ -140,6 +143,7 @@ If you are building Python by yourself, rebuild with `--enable-shared` (or, `--e
 python3 -m pip install --upgrade pip
 python3 -m pip install --upgrade setuptools
 python3 -m pip install --upgrade pyinstaller
+python3 -m pip install --upgrade pyqtdarktheme
 python3 -m pip install --upgrade requests lxml python-dateutil PyQt5
 ```
 _Note:_ If you are not logged in as root (which is recommended), you need to ensure that `pyInstaller` is included in your PATH environment variable:
