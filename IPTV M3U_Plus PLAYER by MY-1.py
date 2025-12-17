@@ -26,18 +26,21 @@ from PyQt5.QtWidgets import (
     QTreeWidget, QTreeWidgetItem, QTreeView, QAction, QMenu, QComboBox, QSplitter
 )
 
+import qdarkstyle
+
 from AccountManager import AccountManager
 from CustomPyQtWidgets import LiveInfoBox, MovieInfoBox, SeriesInfoBox
 import Threadpools
 from Threadpools import FetchDataWorker, SearchWorker, OnlineWorker, EPGWorker, MovieInfoFetcher, SeriesInfoFetcher, ImageFetcher
 
-CURRENT_VERSION = "V1.04.00"
+CURRENT_VERSION = "V1.04.01"
 
 is_windows  = sys.platform.startswith('win')
 is_mac      = sys.platform.startswith('darwin')
 is_linux    = sys.platform.startswith('linux')
 
-GITHUB_REPO = "Youri666/Xtream-m3u_plus-IPTV-Player"
+# GITHUB_REPO = "Youri666/Xtream-m3u_plus-IPTV-Player" - the original forked project
+GITHUB_REPO = "tealtainha/Xtream-Player"
 
 class IPTVPlayerApp(QMainWindow):
     def __init__(self):
@@ -77,7 +80,7 @@ class IPTVPlayerApp(QMainWindow):
         self.updateUserDataFile()
 
         self.path_to_window_icon            = path.abspath(path.join(path.dirname(__file__), 'Images/TV_icon.ico'))
-        self.path_to_no_img                 = path.abspath(path.join(path.dirname(__file__), 'Images/no_image.jpg'))
+        self.path_to_no_img                 = path.abspath(path.join(path.dirname(__file__), 'Images/no_image.png'))
         self.path_to_loading_img            = path.abspath(path.join(path.dirname(__file__), 'Images/loading-icon.png'))
         self.path_to_404_img                = path.abspath(path.join(path.dirname(__file__), 'Images/404_not_found.png'))
         
@@ -2490,6 +2493,7 @@ class IPTVPlayerApp(QMainWindow):
 def main():
     app = QApplication(sys.argv)
     app.setStyle('Fusion')
+    app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
     player = IPTVPlayerApp()
     player.show()
     # player.showMaximized()
