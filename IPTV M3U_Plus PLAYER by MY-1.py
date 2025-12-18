@@ -821,13 +821,13 @@ class IPTVPlayerApp(QMainWindow):
         self.default_sorting_order_box.addItems(["A-Z", "Z-A", "Sorting disabled"])
         self.default_sorting_order_box.currentTextChanged.connect(lambda e: self.setDefaultSortingOrder(e, self.default_sorting_order_box))
 
-        # self.cache_on_startup_checkbox = QCheckBox("Startup with cached data")
-        # self.cache_on_startup_checkbox.setToolTip("Loads the cached IPTV data on startup to reduce startup time.\nNote that the cached data only changes if you manually reload it once in a while.")
-        # self.cache_on_startup_checkbox.stateChanged.connect(self.toggle_cache_on_startup)
+        self.cache_on_startup_checkbox = QCheckBox("Startup with cached data")
+        self.cache_on_startup_checkbox.setToolTip("Loads the cached IPTV data on startup to reduce startup time.\nNote that the cached data only changes if you manually reload it once in a while.")
+        self.cache_on_startup_checkbox.stateChanged.connect(self.toggle_cache_on_startup)
 
-        # self.reload_data_btn = QPushButton("Reload data")
-        # self.reload_data_btn.setIcon(self.style().standardIcon(QtWidgets.QStyle.SP_BrowserReload))
-        # self.reload_data_btn.setToolTip("Click this to manually reload the IPTV data.\nNote that this only has effect if \'Startup with cached data\' is checked.")
+        self.reload_data_btn = QPushButton("Reload data")
+        self.reload_data_btn.setIcon(self.style().standardIcon(QtWidgets.QStyle.SP_BrowserReload))
+        self.reload_data_btn.setToolTip("Click this to manually reload the IPTV data.\nNote that this only has effect if \'Startup with cached data\' is checked.")
 
         self.select_user_agent_box = QComboBox()
         self.select_user_agent_box.addItems(self.user_agents)
@@ -865,18 +865,23 @@ class IPTVPlayerApp(QMainWindow):
         self.settings_layout.addWidget(self.keep_on_top_checkbox,                           2, 0)
         self.settings_layout.addWidget(QLabel("Default sorting order: "),                   3, 0)
         self.settings_layout.addWidget(self.default_sorting_order_box,                      3, 1)
-        self.settings_layout.addWidget(self.update_checker,                                 4, 0)
-        self.settings_layout.addWidget(self.auto_update_checkbox,                           4, 1)
+        
+        self.settings_layout.addWidget(QLabel("Playlist cache data:"),                      4, 0)
+        self.settings_layout.addWidget(self.cache_on_startup_checkbox,                      4, 1)
+        #self.settings_layout.addWidget(self.reload_data_btn,                                4, 2)
+        
+        self.settings_layout.addWidget(self.update_checker,                                 5, 0)
+        self.settings_layout.addWidget(self.auto_update_checkbox,                           5, 1)
 
         #Advanced options
-        self.settings_layout.addWidget(QLabel("Select User-Agent (Advanced option): "),         5, 0)
-        self.settings_layout.addWidget(self.select_user_agent_box,                              5, 1)
-        self.settings_layout.addWidget(QLabel("Set connection timeout (Advanced option): "),    6, 0)
-        self.settings_layout.addWidget(self.set_connection_timeout,                             6, 1)
-        self.settings_layout.addWidget(QLabel("Set read timeout (Advanced option): "),          7, 0)
-        self.settings_layout.addWidget(self.set_read_timeout,                                   7, 1)
-        self.settings_layout.addWidget(QLabel("Set live status timeout (Advanced option): "),   8, 0)
-        self.settings_layout.addWidget(self.set_live_status_timeout,                            8, 1)
+        self.settings_layout.addWidget(QLabel("Select User-Agent (Advanced option): "),         6, 0)
+        self.settings_layout.addWidget(self.select_user_agent_box,                              6, 1)
+        self.settings_layout.addWidget(QLabel("Set connection timeout (Advanced option): "),    7, 0)
+        self.settings_layout.addWidget(self.set_connection_timeout,                             7, 1)
+        self.settings_layout.addWidget(QLabel("Set read timeout (Advanced option): "),          8, 0)
+        self.settings_layout.addWidget(self.set_read_timeout,                                   8, 1)
+        self.settings_layout.addWidget(QLabel("Set live status timeout (Advanced option): "),   9, 0)
+        self.settings_layout.addWidget(self.set_live_status_timeout,                            9, 1)
 
         # self.settings_layout.addWidget(self.cache_on_startup_checkbox,  2, 0)
         # self.settings_layout.addWidget(self.reload_data_btn,            3, 0)
@@ -1111,6 +1116,9 @@ class IPTVPlayerApp(QMainWindow):
     def loadDataAtStartup(self):
         #Load external media player
         self.external_player_command = self.load_external_player_command()
+        
+        #Load info about loading from cache
+        self.startup_with_cache =  self.load_startup_with_cache()
 
         #Load default sorting setting
         self.loadDefaultSortingOrder()
@@ -1189,6 +1197,12 @@ class IPTVPlayerApp(QMainWindow):
             config.write(config_file)
     
     def toggle_cache_on_startup(self, state):
+        checked = bool(state)
+        #self.save_
+        
+        self.startup_with_cache = checked
+        self.save_startup_with_cache()
+        
         if state == Qt.Checked:
             print("checked")
         else:
@@ -2465,6 +2479,8 @@ class IPTVPlayerApp(QMainWindow):
         except Exception as e:
             print(f"search in list failed: {e}")
 
+
+
     def load_external_player_command(self):
         external_player_command = ""
 
@@ -2485,6 +2501,32 @@ class IPTVPlayerApp(QMainWindow):
 
         with open(self.user_data_file, 'w') as config_file:
             config.write(config_file)
+
+
+
+
+    def load_startup_with_cache(self):
+        startup_with_cache = ""
+
+        config = configparser.ConfigParser()
+        config.read(self.user_data_file)
+
+        if 'Startup with cache' in config:
+            startup_with_cache = config['Startup with cache'].get('startup-with-cache', '')
+
+        return startup_with_cache
+
+    def save_startup_with_cache(self):
+        config = configparser.ConfigParser()
+        config.read(self.user_data_file)
+
+        config['Startup with cache'] = {'startup-with-cache': self.startup_with_cache}
+
+        with open(self.user_data_file, 'w') as config_file:
+            config.write(config_file)
+
+
+
 
     def open_address_book(self):
         dialog = AccountManager(self)
