@@ -67,7 +67,7 @@ REM Run PyInstaller directly with all necessary options and added data files
   --distpath %DIST_PATH% ^
   --add-data "Images/TV_icon.ico;Images" ^
   --add-data "Images/404_not_found.png;Images" ^
-  --add-data "Images/no_image.jpg;Images" ^
+  --add-data "Images/no_image.png;Images" ^
   --add-data "Images/loading-icon.png;Images" ^
   --add-data "Images/home_tab_icon.ico;Images" ^
   --add-data "Images/tv_tab_icon.ico;Images" ^
@@ -107,7 +107,7 @@ REM Create executable with debug console
   --distpath %DIST_PATH% ^
   --add-data "Images/TV_icon.ico;Images" ^
   --add-data "Images/404_not_found.png;Images" ^
-  --add-data "Images/no_image.jpg;Images" ^
+  --add-data "Images/no_image.png;Images" ^
   --add-data "Images/loading-icon.png;Images" ^
   --add-data "Images/home_tab_icon.ico;Images" ^
   --add-data "Images/tv_tab_icon.ico;Images" ^

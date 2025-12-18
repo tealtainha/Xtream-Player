@@ -34,12 +34,14 @@ Download the latest version here: [Latest releases](https://github.com/tealtainh
 - **Recommended Player:** For optimal performance, use VLC media player. Download it at: https://www.videolan.org/vlc/
 - **Recommended Player:** For optimal performance, use SMPlayer. Download it at: https://www.smplayer.info
 
+# Implemented features after the fork
+- **Dark theme** is now the default
+
 # Future plans
 - **M3U file support**: Select M3U file or URL to M3U file to load data from.
 - **Home tab:** Home tab with previously watched and popular movies and series.
 - **TMDB support:** Much more information about movies and series with the TMDB API.
 - **Improve startup loading time:** Improve loading time at startup by optionally loading the IPTV data from cache.
-- **Dark theme**
 
 <details>
 <summary><h1><strong>FAQ</strong></h1></summary>
