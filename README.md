@@ -1,5 +1,5 @@
 ![GitHub all releases](https://img.shields.io/github/downloads/tealtainha/Xtream-Player/total?color=blue&label=Total%20Downloads&logo=github)
-![GitHub release (latest by date)](https://img.shields.io/github/downloads/tealtainha/Xtream-Player/V1.04.01/total?color=purple&label=Latest%20Release%20Downloads&logo=github)
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/tealtainha/Xtream-Player/v1.04.01/total?color=purple&label=Latest%20Release%20Downloads&logo=github)
 ![GitHub License](https://img.shields.io/github/license/tealtainha/Xtream-Player?label=License&logo=github)
 ![GitHub stars](https://img.shields.io/github/stars/tealtainha/Xtream-Player)
 
